@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS blending test plan</title>
+    <meta charset='utf-8'>
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common'
+            async class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+          specStatus: "unofficial",
+          shortName:  "css3-blending-test-plan",
+          editors: [
+                {   name:       "Mirela Budaes",
+                    company:    "Adobe Systems, Inc.",
+                    companyURL: "http://www.adobe.com/" }
+          ]
+      };
+    </script>
+    <style>
+    table
+      {
+        border-collapse:collapse;
+      }
+      table, td, th
+      {
+        border:1px solid black;
+        padding: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
+
+      </p>
+    </section>
+    
+    <section>
+      <h2>Introduction</h2>
+      <p>
+      </p>
+    </section>
+    <section>
+      <h2>Goals</h2>
+      <p>
+          
+      </p>
+    </section>
+    <section>
+      <h2>Approach</h2>
+    </section>
+    <section>
+      <h2>Testig areas</h2>
+    </section>
+    <section>
+      <h2>Test case description</h2>
+      <table>
+        <tr>
+          <th>Test case</th>
+          <th>Description</th>
+          <th>Expected</th>
+        </tr>
+        <tr>
+          <td>3D-transformed element</td>
+          <td>Element with mix-blend-mode and 3D transform properties specified</td>
+          <td>The colour of the element is blended with the background colour of the BODY</td>
+        </tr>
+        <tr>
+          <td>Parent 3D-transformed element</td>
+          <td>Element with mix-blend-mode property is a child of an element with 3D transform property specified</td>
+          <td>The colours of the two elements are blended</td>
+        </tr>
+        <tr>
+          <td>Child 3D-transformed element</td>
+          <td>Element with mix-blend-mode property is a parent of an element with 3D transform property specified</td>
+          <td>The colours of the parent, child and the background of the BODY are blended</td>
+        </tr>
+        <tr>
+          <td>Video element</td>
+          <td>Video element with mix-blend-mode property specified</td>
+          <td>The colour of the element is blended with the background colour of the BODY</td>
+        </tr>
+        <tr>
+          <td>Overlapped Video element</td>
+          <td>Element with mix-blend-mode property partially overlap the video element</td>
+          <td>The colours of the two elements are blended</td>
+        </tr>
+        <tr>
+          <td>Child Video element</td>
+          <td>Element with mix-blend-mode property is a parent of an video element </td>
+          <td>The colours of the parent, child and the background of the BODY are blended</td>
+        </tr>
+        <tr>
+          <td>Canvas element</td>
+          <td>Canvas element with mix-blend-mode property</td>
+          <td>The colour of the element is blended with the background colour of the BODY</td>
+        </tr>
+        <tr>
+          <td>Overlapped Canvas element</td>
+          <td>Element with mix-blend-mode property partially overlap the canvas element</td>
+          <td>The colours of the two elements are blended</td>
+        </tr>
+        <tr>
+          <td>Child Canvas element</td>
+          <td>Element with mix-blend-mode property is a parent of a canvas element </td>
+          <td>The colours of the parent, child and the background of the BODY are blended</td>
+        </tr>
+        <tr>
+          <td>CSS animation for one of the following properties: opacity, transforms, filters</td>
+          <td>Animated element with mix-blend-mode property specified</td>
+          <td>The colour of the element is blended with the background colour of the BODY</td>
+        </tr>
+        <tr>
+          <td>Parent CSS animation for one of the following properties: opacity, transforms, filters</td>
+          <td>The element with mix-blend-mode property is a child of an animated element</td>
+          <td>The colours of the two elements are blended</td>
+        </tr>
+        <tr>
+          <td>Child CSS animation for the following properties: opacity, transforms, filters</td>
+          <td>The element with mix-blend-mode property is a parent of an animated element</td>
+          <td>The colours of the parent, child and the background of the BODY are blended</td>
+        </tr>
+        <tr>
+          <td>CSS transition for the following properties: opacity, transforms, filters</td>
+          <td>Transitioned element with mix-blend-mode property specified</td>
+          <td>The colour of the element is blended with the background colour of the BODY</td>
+        </tr>
+        <tr>
+          <td>Parent CSS transition for the following properties: opacity, transforms, filters</td>
+          <td>The element with mix-blend-mode property is a child of an transitioned element</td>
+          <td>The colours of the two elements are blended</td>
+        </tr>
+        <tr>
+          <td>Child CSS transition for the following properties: opacity, transforms, filters</td>
+          <td>Element with mix-blend-mode property is a parent of an transitioned element</td>
+          <td>The colours of the parent, child and the background of the BODY are blended</td>
+        </tr>
+        <tr>
+          <td>Element with position:fixed and opacity </td>
+          <td>Element with mix-blend-mode, position: fixed and opacity<1 </td>
+          <td>The colour of the element is blended with the background colour of the BODY</td>
+        </tr>
+        <tr>
+          <td>Parent element with position:fixed and opacity </td>
+          <td>Element with mix-blend-mode is a child of an element with the following css properties: "position: fixed" and opacity<1 </td>
+          <td>The colours of the two elements are blended</td>
+        </tr>
+        <tr>
+          <td>Child element with position:fixed and opacity </td>
+          <td>Element with mix-blend-mode is a parent of an element with the following css properties: "position: fixed" and opacity<1</td>
+          <td>The colours of the parent, child and the background of the BODY are blended</td>
+        </tr>
+        <tr>
+          <td>Element with css properties: position:fixed and transform </td>
+          <td>Element with mix-blend-mode, position: fixed and transform properties specified</td>
+          <td>The colour of the element is blended with the background colour of the BODY</td>
+        </tr>
+        <tr>
+          <td>Parent element with css properties: position:fixed and transform  </td>
+          <td>Element with mix-blend-mode is a child of an element with the following css properties: "position: fixed" and transform </td>
+          <td>The colours of the two elements are blended</td>
+        </tr>
+        <tr>
+          <td>Child element with css properties: position:fixed and transform </td>
+          <td>Element with mix-blend-mode is a parent of an element with the following css properties: "position: fixed" and transform </td>
+          <td>The colours of the parent, child and the background of the BODY are blended</td>
+        </tr>
+        <tr>
+          <td>Element with css properties: float: left or right and clip-path</td>
+          <td>Element with mix-blend-mode, float: left or right and clip-path properties</td>
+          <td>The colour of the element is blended with the background colour of the BODY</td>
+        </tr>
+        <tr>
+          <td>Parent element with css properties: float: left or right and clip-path</td>
+          <td>Element with mix-blend-mode is a child of an element with the following css properties: float: left or right and clip-path</td>
+          <td>The colours of the two elements are blended</td>
+        </tr>
+        <tr>
+          <td>Child element with css properties: float: left or right and clip-path</td>
+          <td>Element with mix-blend-mode is a parent of an element with the following css properties: float: left or right and clip-path</td>
+          <td>The colours of the parent, child and the background of the BODY are blended</td>
+        </tr>
+        <tr>
+          <td>Element with position:fixed and at least one descendant with negative z-index and animation for opacity</td>
+          <td>Element with mix-blend-mode, position:fixed and at least one descendant with negative z-index and animation for opacity</td>
+          <td>The colour of the elements is blended with the background colour of the BODY</td>
+        </tr>
+        <tr>
+          <td>Parent element with position:fixed and at least one descendant with negative z-index and animation for opacity</td>
+          <td>Element with mix-blend-mode is a child of the element with position:fixed that has at least one descendant with negative z-index and animation for opacity</td>
+          <td>The colours of the two elements are blended</td>
+        </tr>
+        <tr>
+          <td>Child element with position:fixed and at least one descendant with negative z-index and animation for opacity</td>
+          <td>Element with mix-blend-mode is a parent of the element with position:fixed that has at least one descendant with negative z-index and animation for opacity</td>
+          <td>The colours of the parent, child and the background of the BODY are blended</td>
+        </tr>
+
+        
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
