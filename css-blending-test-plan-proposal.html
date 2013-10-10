@@ -31,178 +31,330 @@
   <body>
     <section id='abstract'>
       <p>
-
+        This document is intended to be used as a guideline for the testing
+        activities related to the CSS Blending spec [[!compositing-1]]. Its main
+        goal is to provide an overview of the general testing areas and an informative
+        description of possible test cases.
+      </p>
+      <p>
+        This document is not meant to replace the spec in determining the 
+        normative and non-normative assertions to be tested, but rather
+        complement it.
       </p>
     </section>
     
     <section>
       <h2>Introduction</h2>
       <p>
+
       </p>
     </section>
     <section>
       <h2>Goals</h2>
       <p>
-          
+        To ensure a comprehensive test suite with useful, high quality tests, a
+        number of goals are proposed. They range from process goals (how to
+        conduct testing) to implementation goals (how to write good tests).
       </p>
+      <section>
+        <h3>Enabling easy test contribution</h3>
+        <p>
+          An important vector in creating successfully testing for CSS Blending is to
+          enable easy test contributions, both from W3C partners and from
+          non-W3C members that wish to contribute. This is achieved by clearly
+          marking and explaining the areas that need testing, linked to existing
+          tests and general testing progress [TBD]. 
+        </p>
+      </section>
+      <section>
+        <h3>Providing guidance on testing</h3>
+        <p>
+          In order to increase the quality of the test contributions, this
+          document offers a set of test cases description for conducting testing (see
+          <a href="#test-cases-description" class="sectionRef"></a>).
+        </p>
+      </section>
+      <section>
+        <h3>Creating automation-friendly tests</h3>
+        <p>
+          In terms of actual tests produced for the CSS Blending, the main goal
+          is to ensure that most tests are automatable (i.e. they're either
+          reftests or use <code>testharness.js</code>). Even where manual tests
+          are absolutely necessary they should be written so that they can be
+          easily automated &ndash; as there are on-going efforts to make
+          WebDriver [[webdriver]] automated tests a first class citized in W3C
+          testing. This means that even if a manual test requires user
+          interaction, the validation or PASS/FAIL conditions should still be
+          clear enough as to allow automatic validation if said interaction is
+          later automated.
+        </p>
+      </section>
     </section>
     <section>
       <h2>Approach</h2>
+      <p>
+        Since CSS blending has only a few sets of CSS properties,
+        the approach is to deep dive every aspect of the spec as much as possible.
+
+        Tests will be created for the testing areas listed in <a href="#testig-areas" class="sectionRef"></a> 
+        and having as guidance the test cases description from <a href="#test-cases-description" class="sectionRef"></a>.
+      </p>
     </section>
     <section>
       <h2>Testig areas</h2>
+      <section>
+        <h3>Explicit testing area</h3>
+        <p>Below is the list of explicit testing areas</p>
+        <ol>
+          <li>Proper parsing of the CSS properties and rules, rendering according to the spec.</li>
+          <ul><code>mix-blend-mode</code></ul>
+          <ul><code>isolation</code></ul>
+          <ul><code>background-blend-mode</code></ul>
+          <li>SVG blending</li>
+          <li>Canvas blending</li>
+        </ol>
+      </section>
+      <section>
+        <h3>Implicit testing areas</h3>
+        <p>Below is the list of implicit testing areas</p>
+        <ol>
+            <li>CSS blending diffrent types of elements
+              <ul>
+                <li><code>&lt;video&gt;</code></li>
+                <li><code>&lt;canvas&gt;</code></li>
+                <li><code>&lt;table&gt;</code></li>
+                <li>Transforms</li>
+                <li>Transitions and animations</li>
+                </ul>
+            </li>
+        </ol>
+      </section>
     </section>
     <section>
-      <h2>Test case description</h2>
-      <table>
-        <tr>
-          <th>Test case</th>
-          <th>Description</th>
-          <th>Expected</th>
-        </tr>
-        <tr>
-          <td>3D-transformed element</td>
-          <td>Element with mix-blend-mode and 3D transform properties specified</td>
-          <td>The colour of the element is blended with the background colour of the BODY</td>
-        </tr>
-        <tr>
-          <td>Parent 3D-transformed element</td>
-          <td>Element with mix-blend-mode property is a child of an element with 3D transform property specified</td>
-          <td>The colours of the two elements are blended</td>
-        </tr>
-        <tr>
-          <td>Child 3D-transformed element</td>
-          <td>Element with mix-blend-mode property is a parent of an element with 3D transform property specified</td>
-          <td>The colours of the parent, child and the background of the BODY are blended</td>
-        </tr>
-        <tr>
-          <td>Video element</td>
-          <td>Video element with mix-blend-mode property specified</td>
-          <td>The colour of the element is blended with the background colour of the BODY</td>
-        </tr>
-        <tr>
-          <td>Overlapped Video element</td>
-          <td>Element with mix-blend-mode property partially overlap the video element</td>
-          <td>The colours of the two elements are blended</td>
-        </tr>
-        <tr>
-          <td>Child Video element</td>
-          <td>Element with mix-blend-mode property is a parent of an video element </td>
-          <td>The colours of the parent, child and the background of the BODY are blended</td>
-        </tr>
-        <tr>
-          <td>Canvas element</td>
-          <td>Canvas element with mix-blend-mode property</td>
-          <td>The colour of the element is blended with the background colour of the BODY</td>
-        </tr>
-        <tr>
-          <td>Overlapped Canvas element</td>
-          <td>Element with mix-blend-mode property partially overlap the canvas element</td>
-          <td>The colours of the two elements are blended</td>
-        </tr>
-        <tr>
-          <td>Child Canvas element</td>
-          <td>Element with mix-blend-mode property is a parent of a canvas element </td>
-          <td>The colours of the parent, child and the background of the BODY are blended</td>
-        </tr>
-        <tr>
-          <td>CSS animation for one of the following properties: opacity, transforms, filters</td>
-          <td>Animated element with mix-blend-mode property specified</td>
-          <td>The colour of the element is blended with the background colour of the BODY</td>
-        </tr>
-        <tr>
-          <td>Parent CSS animation for one of the following properties: opacity, transforms, filters</td>
-          <td>The element with mix-blend-mode property is a child of an animated element</td>
-          <td>The colours of the two elements are blended</td>
-        </tr>
-        <tr>
-          <td>Child CSS animation for the following properties: opacity, transforms, filters</td>
-          <td>The element with mix-blend-mode property is a parent of an animated element</td>
-          <td>The colours of the parent, child and the background of the BODY are blended</td>
-        </tr>
-        <tr>
-          <td>CSS transition for the following properties: opacity, transforms, filters</td>
-          <td>Transitioned element with mix-blend-mode property specified</td>
-          <td>The colour of the element is blended with the background colour of the BODY</td>
-        </tr>
-        <tr>
-          <td>Parent CSS transition for the following properties: opacity, transforms, filters</td>
-          <td>The element with mix-blend-mode property is a child of an transitioned element</td>
-          <td>The colours of the two elements are blended</td>
-        </tr>
-        <tr>
-          <td>Child CSS transition for the following properties: opacity, transforms, filters</td>
-          <td>Element with mix-blend-mode property is a parent of an transitioned element</td>
-          <td>The colours of the parent, child and the background of the BODY are blended</td>
-        </tr>
-        <tr>
-          <td>Element with position:fixed and opacity </td>
-          <td>Element with mix-blend-mode, position: fixed and opacity<1 </td>
-          <td>The colour of the element is blended with the background colour of the BODY</td>
-        </tr>
-        <tr>
-          <td>Parent element with position:fixed and opacity </td>
-          <td>Element with mix-blend-mode is a child of an element with the following css properties: "position: fixed" and opacity<1 </td>
-          <td>The colours of the two elements are blended</td>
-        </tr>
-        <tr>
-          <td>Child element with position:fixed and opacity </td>
-          <td>Element with mix-blend-mode is a parent of an element with the following css properties: "position: fixed" and opacity<1</td>
-          <td>The colours of the parent, child and the background of the BODY are blended</td>
-        </tr>
-        <tr>
-          <td>Element with css properties: position:fixed and transform </td>
-          <td>Element with mix-blend-mode, position: fixed and transform properties specified</td>
-          <td>The colour of the element is blended with the background colour of the BODY</td>
-        </tr>
-        <tr>
-          <td>Parent element with css properties: position:fixed and transform  </td>
-          <td>Element with mix-blend-mode is a child of an element with the following css properties: "position: fixed" and transform </td>
-          <td>The colours of the two elements are blended</td>
-        </tr>
-        <tr>
-          <td>Child element with css properties: position:fixed and transform </td>
-          <td>Element with mix-blend-mode is a parent of an element with the following css properties: "position: fixed" and transform </td>
-          <td>The colours of the parent, child and the background of the BODY are blended</td>
-        </tr>
-        <tr>
-          <td>Element with css properties: float: left or right and clip-path</td>
-          <td>Element with mix-blend-mode, float: left or right and clip-path properties</td>
-          <td>The colour of the element is blended with the background colour of the BODY</td>
-        </tr>
-        <tr>
-          <td>Parent element with css properties: float: left or right and clip-path</td>
-          <td>Element with mix-blend-mode is a child of an element with the following css properties: float: left or right and clip-path</td>
-          <td>The colours of the two elements are blended</td>
-        </tr>
-        <tr>
-          <td>Child element with css properties: float: left or right and clip-path</td>
-          <td>Element with mix-blend-mode is a parent of an element with the following css properties: float: left or right and clip-path</td>
-          <td>The colours of the parent, child and the background of the BODY are blended</td>
-        </tr>
-        <tr>
-          <td>Element with position:fixed and at least one descendant with negative z-index and animation for opacity</td>
-          <td>Element with mix-blend-mode, position:fixed and at least one descendant with negative z-index and animation for opacity</td>
-          <td>The colour of the elements is blended with the background colour of the BODY</td>
-        </tr>
-        <tr>
-          <td>Parent element with position:fixed and at least one descendant with negative z-index and animation for opacity</td>
-          <td>Element with mix-blend-mode is a child of the element with position:fixed that has at least one descendant with negative z-index and animation for opacity</td>
-          <td>The colours of the two elements are blended</td>
-        </tr>
-        <tr>
-          <td>Child element with position:fixed and at least one descendant with negative z-index and animation for opacity</td>
-          <td>Element with mix-blend-mode is a parent of the element with position:fixed that has at least one descendant with negative z-index and animation for opacity</td>
-          <td>The colours of the parent, child and the background of the BODY are blended</td>
-        </tr>
-
-        
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
+        <h2>Test cases description</h2>
+        <section>
+          <h3>Test cases for <code>mix-blend-mode</code></h3>
+          <section>
+            <h4>The element with <code>mix-blend-mode</code> property other than normal creates stacking context</h4>
+            <table>
+              <tr>
+                <th>Test case</th>
+                <th>Test data</th>
+                <th>Expected result</th>
+              </tr>
+              <tr>
+                <td>Simple DIV</td>
+                <td>Child DIV element with <code>mix-blend-mode</code> other than normal.<br> 
+                    Parent DIV element with <code>background-color</code> value. </td>
+                <td>The child DIV creates stacking context. <br>  The colors of the DIV elements are blended.</td>
+              </tr>
+              <tr>
+                <td>DIV with opacity </td>
+                <td>Child DIV element with <code>mix-blend-mode</code> other than normal and <code>opacity</code> less than one. <br>
+                    Parent DIV element with <code>background-color</code> value. </td>
+                <td>The child DIV creates stacking context. <br>  The colors of the DIV elements are blended.</td>
+              </tr>
+              <tr>
+                <td>Image element</td>
+                <td>Child IMAGE element with <code>mix-blend-mode</code> other than normal.<br> 
+                    Parent DIV element with <code>background-color</code> value. </td>
+                <td>The IMAGE element creates stacking context. <br>The color of the IMAGE is mixed with the color of the DIV.</td>
+              </tr>
+              <tr>
+                <td>SVG element</td>
+                <td>Child SVG element  with <code>mix-blend-mode</code> other than normal.<br> 
+                    Parent DIV element with <code>background-color</code> value.</td>
+                <td>The SVG element creates stacking context. <br> The color of the SVG is mixed with the color of the DIV</td>
+              </tr>
+              <tr>
+                <td>P element</td>
+                <td>Child P element with <code>mix-blend-mode</code> other than normal.</td>
+                <td>The P element creates stacking context. <br>The color of the text from the P element is mixed with the color of the DIV</td>
+              </tr> 
+              <tr>
+                <td>P element with background-image</td>
+                <td>Child P element with <code>mix-blend-mode</code> other than normal.<br> 
+                    Parent DIV element with <code>background-image</code> </td>
+                <td>The P element creates stacking context. <br> The colour of the text from the P element is mixed with the background image of the div element</td>
+              </tr> 
+              <tr>
+                <td>Set-up blending from JavaScript</td>
+                <td>Child DIV element<br> 
+                    Parent DIV element with <code>background-color</code> value. <br>
+                    From JavaScript, set the <code>mix-blend-mode</code> property for the child DIV to a value other than normal.</td>
+                <td>The child DIV creates stacking context. <br>  The colors of the DIV elements are blended.</td>
+              </tr>
+              <tr>
+                <td>Set-up blending and opacity from JavaScript</td>
+                <td>Child DIV element<br> 
+                    Parent DIV element with <code>background-color</code> value. <br>
+                    From JavaScript, set the <code>mix-blend-mode</code> property for the child DIV to a value other than normal and <code>opacity</code> to less than one.</td>
+                <td>The child DIV creates stacking context. <br>  The colors of the DIV elements are blended.</td>
+              </tr>     
+            </table>
+          </section>
+          <section>
+            <h4>The element with <code>mix-blend-mode</code> property blends with the parent stacking context</h4>
+            <table>
+              <tr>
+                <th>Test case</th>
+                <th>Test data</th>
+                <th>Expected result</th>
+              </tr>
+              <tr>
+                <td>Opacity</td>
+                <td>Parent element with <code>opacity</code> less than one. <br>
+                   Child element <code>mix-blend-mode</code> other than normal.</td>
+                <td>The color of the parent element mixes with the color of the child element</td>
+              </tr>
+              <tr>
+                <td>3D transform</td>
+                <td>Parent element with <code>3D transform</code>. <br>
+                   Child element <code>mix-blend-mode</code> other than normal and <code>backface-visibility:hidden</code>.</td>
+                <td>The color of the parent element mixes with the color of the child element</td>
+              </tr>
+              <tr>
+                <td>Child position:fixed</td>
+                <td>Parent element with <code>opacity</code> less than one. <br>
+                    Child element with <code>mix-blend-mode</code> other than normal and <code>position:fixed</code>.</td>
+                  Parent element has opacity and child element has mix-blend-mode property and position:fixed</td>
+                <td>The color of the parent element mixes with the color of the child element</td>
+              </tr>
+              <tr>
+                <td>Child opacity and 3D transform</td>
+                <td>Parent element with <code>3D transform</code>. <br>
+                    Child element with <code>mix-blend-mode</code> other than normal, <code>opacity</code> less than one and <code>3D transform</code>.</td>
+                <td>The color of the parent element mixes with the color of the child element</td>
+              </tr>
+            </table>
+          </section>
+          <section>
+            <h4>The element with <code>mix-blend-mode</code> property has the width greater than the parent stacking context element</h4>
+            <table>
+              <tr>
+                <th>Test case</th>
+                <th>Test data</th>
+                <th>Expected result</th>
+              </tr>
+              <tr>
+                <td>Parent position:fixed</td>
+                <td>Parent element with <code>position:fixed</code>. <br>
+                    Child element with <code>mix-blend-mode</code> other than normal and <code>opacity</code> less than one. <br>
+                    The width of the child element is bigger than the parent element. <br> 
+                      <code>background-color</code> for the BODY other than <code>transparent</code>.</td>
+                <td>The color of the parent element mixes with the color of the child element. <br>
+                   The area of the child element outside the parent stacking context doesn't mix with the color of the BODY</td>
+              </tr>       
+            </table>
+          </section>
+          <section>
+            <h4>Operations that cause the creation of stacking context must cause a group to be isolated</h4>
+            <table>
+              <tr>
+                <th>Test case</th>
+                <th>Test data</th>
+                <th>Expected result</th>
+              </tr>
+              <tr>
+                <td>Opacity and 2D transform</td>
+                <td>Parent element with <code>opacity</code> less than one and <code>2D transform</code>. <br>
+                    Child element with <code>mix-blend-mode</code> other than normal and <code>2D transform</code>.</td>
+                <td>The color of the parent element mixes with the color of the child element.</td>
+              </tr>
+            </table>
+          </section>
+          <section>
+            <h4><code>mix-blend-mode</code> property must cause the group to be isolated</h4>
+            <table>
+              <tr>
+                <th>Test case</th>
+                <th>Test data</th>
+                <th>Expected result</th>
+              </tr>
+              <tr>
+                <td>Child position:fixed</td>
+                <td>Parent element with <code>mix-blend-mode</code> other than normal. <br>
+                    Child element with <code>position:fixed</code>. </td>
+                <td>No blending between the parent and the child element. </td>
+              </tr>
+              <tr>
+                <td>Child with opacity</td>
+                <td>Parent element with <code>mix-blend-mode</code> other than normal and <code>position:fixed</code>. <br>
+                    Child element with <code>opacity</code> less than one.</td>
+                  <td>No blending between the parent and the child element. </td>
+              </tr>
+              <tr>
+                <td>Child with 3D transform</td>
+                <td>Parent element with <code>mix-blend-mode</code> other than normal and <code>opacity</code> less than one. <br>
+                    Child element with <code>3D transform</code>.</td>
+                   <td>No blending between the parent and the child element.</td>
+              </tr>
+              <tr>
+                <td>Parent 3D transform</td>
+                <td>Parent element with <code>mix-blend-mode</code> other than normal and <code>3D transform</code>. <br>
+                 Child element with <code>3D transform</code>.</td>
+                <td>No blending between the parent and the child element.</td>
+              </tr>
+              <tr>
+                <td>Parent with opacity and 3D transform</td>
+                <td>Parent element with <code>mix-blend-mode</code> other than normal, <code>opacity</code> less than one and <code>3D transform</code>. <br>
+                  Child with <code>opacity</code> less than one and <code>3D transform</code>.</td>
+                <td>No blending between the parent and the child element.</td>
+              </tr>
+            </table>
+          </section>
+          <section>
+            <h4>Elements between the parent stacking context and child element with <code>mix-blend-mode</code> property</h4>
+            <table>
+              <tr>
+                <th>Test case</th>
+                <th>Test data</th>
+                <th>Expected result</th>
+              </tr>
+              <tr>
+                <td>Parent position:fixed</td>
+                <td>Parent element with <code>position:fixed</code>. <br>
+                  Child element with <code>mix-blend-mode</code> other than normal. <br>
+                  Intermediate DIV  with default <code>background-color</code> between the parent and the child. </td>
+                <td>The colors of the parent and the child are mixed.<br>
+                 The transparent <code>background-color</code> of the intermediate DIV doesn't affect the color mix. </td>
+              </tr>
+              <tr>
+                <td>Parent opacity</td>
+                <td>Parent element with <code>opacity</code> less than one. <br>
+                  Child element with <code>mix-blend-mode</code> other than normal and <code>position:fixed</code>. <br>
+                  Intermediate VIDEO element between the parent and the child.
+                </td>
+                <td>The colors of the three elements are mixed.</td>
+              </tr>
+              <tr>
+                <td>Parent with 3D transform</td>
+                <td>Parent element with <code>3D transform</code>. <br>
+                  Child element with <code>mix-blend-mode</code> other than normal and <code>opacity</code> less than one. <br>
+                  Intermediate TABLE element with default <code>background-color</code> between the parent and the child.
+                </td>
+                <td>The colors of the parent and the child are mixed.<br>
+                 The transparent <code>background-color</code> of the intermediate DIV doesn't affect the color mix.</td>
+              </tr>
+              <tr>
+                <td>Parent with opacity and 3D transform</td>
+                <td>Parent element with <code>opacity</code> less than one and <code>3D transform</code>. <br>
+                  Child element with <code>mix-blend-mode</code> other than normal and <code>3D transform</code>. <br>
+                  Intermediate CANVAS element with default <code>background-color</code> other than transparent between the parent and the child.
+                </td>
+                <td>The colors of the three elements are mixed.<br></td>
+              </tr>
+              <tr>
+                <td>Parent and child with opacity and 3D transform</td>
+                <td>Parent element with <code>opacity</code> less than one and <code>3D transform</code>. <br>
+                  Child element with <code>mix-blend-mode</code> other than normal,  <code>opacity</code> less than one and <code>3D transform</code>. <br>
+                  Intermediate IMG element between the parent and the child.
+                </td>
+                <td>The colors of the three elements are mixed.<br></td>
+              </tr>
+            </table>
+        </section>
+      </section>
     </section>
   </body>
 </html>
