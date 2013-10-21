@@ -41,12 +41,12 @@
         description of possible test cases.
       </p>
       <p>
-        This document is not meant to replace the spec in determining the 
+        This document is not meant to replace the spec in determining the
         normative and non-normative assertions to be tested, but rather
         complement it.
       </p>
     </section>
-    
+
     <section>
       <h2>Introduction</h2>
       <p>
@@ -90,7 +90,7 @@
         Since CSS blending has only a few sets of CSS properties,
         the approach is to deep dive every aspect of the spec as much as possible.
 
-        Tests will be created for the testing areas listed in <a href="#testig-areas" class="sectionRef"></a> 
+        Tests will be created for the testing areas listed in <a href="#testig-areas" class="sectionRef"></a>
         and having as guidance the test cases description from <a href="#test-cases-description" class="sectionRef"></a>.
       </p>
     </section>
@@ -144,7 +144,7 @@
               </tr>
               <tr>
                 <td>Simple DIV</td>
-                <td>Child DIV element with <code>mix-blend-mode</code> other than normal. [B] <br> 
+                <td>Child DIV element with <code>mix-blend-mode</code> other than normal. [B] <br>
                     Parent DIV element with <code>background-color</code> other than transparent. [P] </td>
                 <td>The child DIV [B] creates stacking context. <br>  The colors of the DIV elements ( [B] and [P] ) are mixed.</td>
               </tr>
@@ -191,13 +191,13 @@
               </tr>
               <tr>
                 <td>Image element</td>
-                <td>Child IMAGE element with <code>mix-blend-mode</code> other than normal.<br> 
+                <td>Child IMAGE element with <code>mix-blend-mode</code> other than normal.<br>
                     Parent DIV element with <code>background-color</code> other than transparent. </td>
                 <td>The IMAGE element creates stacking context. <br>The color of the IMAGE is mixed with the color of the DIV.</td>
               </tr>
               <tr>
                 <td>SVG element</td>
-                <td>Child SVG element  with <code>mix-blend-mode</code> other than normal.<br> 
+                <td>Child SVG element  with <code>mix-blend-mode</code> other than normal.<br>
                     Parent DIV element with <code>background-color</code> other than transparent.</td>
                 <td>The SVG element creates stacking context. <br> The color of the SVG is mixed with the color of the DIV</td>
               </tr>
@@ -205,33 +205,33 @@
                 <td>P element</td>
                 <td>Child P element with <code>mix-blend-mode</code> other than normal.</td>
                 <td>The P element creates stacking context. <br>The color of the text from the P element is mixed with the color of the DIV</td>
-              </tr> 
+              </tr>
               <tr>
                 <td>P element with background-image</td>
-                <td>Child P element with <code>mix-blend-mode</code> other than normal.<br> 
+                <td>Child P element with <code>mix-blend-mode</code> other than normal.<br>
                     Parent DIV element with <code>background-image</code> </td>
                 <td>The P element creates stacking context. <br> The colour of the text from the P element is mixed with the background image of the div element</td>
-              </tr> 
+              </tr>
               <tr>
                 <td>Set-up blending from JavaScript</td>
-                <td>Child DIV element<br> 
+                <td>Child DIV element<br>
                     Parent DIV element with <code>background-color</code> other than transparent. <br>
                     From JavaScript, set the <code>mix-blend-mode</code> property for the child DIV to a value other than normal.</td>
                 <td>The child DIV creates stacking context. <br>  The colors of the DIV elements are blended.</td>
               </tr>
               <tr>
                 <td>Set-up blending and opacity from JavaScript</td>
-                <td>Child DIV element<br> 
+                <td>Child DIV element<br>
                     Parent DIV element with <code>background-color</code> other than transparent. <br>
                     From JavaScript, set the <code>mix-blend-mode</code> property for the child DIV to a value other than normal and <code>opacity</code> to less than one.</td>
                 <td>The child DIV creates stacking context. <br>  The colors of the DIV elements are blended.</td>
-              </tr> 
+              </tr>
               <tr>
                 <td>Opacity and 2D transform</td>
                 <td>Parent element with <code>opacity</code> less than one and <code>2D transform</code>. <br>
                     Child element with <code>mix-blend-mode</code> other than normal and <code>2D transform</code>.</td>
                 <td>The color of the parent element mixes with the color of the child element.</td>
-              </tr>    
+              </tr>
             </table>
           </section>
           <section>
@@ -246,7 +246,7 @@
                 <td>Parent position:fixed</td>
                 <td>Parent element with <code>position:fixed</code>. [P] <br>
                     Child element with <code>mix-blend-mode</code> other than normal and <code>opacity</code> less than one. [B] <br>
-                    The child element has 2 portions: one that overlap with the parent stacking context and the other one outside of parent the stacking context. <br> 
+                    The child element has 2 portions: one that overlap with the parent stacking context and the other one outside of parent the stacking context. <br>
                       <code>background-color</code> for the BODY other than <code>transparent</code>.</td>
                 <td>The color of the parent element mixes with the color of the child element. <br>
                    The area of the child element outside the parent stacking context doesn't mix with the color of the BODY</td>
@@ -255,7 +255,7 @@
                 <td>Transparent pixels: TBD</td>
                 <td></td>
                 <td></td>
-              </tr>  
+              </tr>
             </table>
           </section>
           <section>
