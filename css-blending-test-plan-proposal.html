@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -413,24 +414,40 @@
               <td>The color of the VIDEO element [P] mixes with the color of the sibling element and the text [IN-S].</td>
             </tr>
             <tr>
-              <td>preserve 3D</td>
-              <td></td>
-              <td>No blending</td>
+              <td>Transform with preserve-3d</td>
+              <td>3 elements required: <a href="#test_outline">[P]</a>, <a href="#test_outline">[B]</a> and <a href="#test_outline">[CB]</a> <br>
+                    [P] - Parent element that creates stacking context(e.g. position:fixed) <br>
+                    [B] - Child element with <code>mix-blend-mode</code> other than normal and transform with <code>transform-style:preserve-3d</code> <br>
+                    [CB] - Child element </td>
+              <td> The child element [CB] will NOT preserve its 3D position. <br>
+              <code>mix-blend-mode</code> override the behavior of <code>transform-style:preserve-3d</code>:
+              creates a flattened representation of the descendant elements <br>
+              The color of the group created by the child elements([B] and [CB]) will blend with the color of the parent element [P] </td>
             </tr>
             <tr>
-              <td>perspective</td>
-              <td></td>
-              <td></td>
+              <td>Transform with perspective</td>
+              <td>2 elements required: <a href="#test_outline">[P]</a> and <a href="#test_outline">[B]</a> <br>
+                  [P] - Parent element with <code>position:absolute</code>,
+                  <code></code>z-index</code> bigger than 1 and <code>background-color</code> other than transparent <br>
+                  [B] - Child element with <code>mix-blend-mode</code> other than normal
+                  and transform with <code>perspective<code/> set to positive length </td>
+              <td>The colors of the parent and the child are mixed ([P] and [B])</td>
             </tr>
             <tr>
-              <td>mask</td>
-              <td></td>
-              <td></td>
+              <td>Mask</td>
+              <td>2 elements required: <a href="#test_outline">[P]</a> and <a href="#test_outline">[B]</a> <br>
+                    [P] - Parent element <br>
+                    [B] - Child element with <code>mix-blend-mode</code> other than normal
+                    and <code>mask</code> specified to an SVG image (e.g. circle)</td>
+              <td>The colors of the parent and the masked child are mixed ([P] and [B])</td>
             </tr>
             <tr>
-              <td>clip-path</td>
-              <td></td>
-              <td></td>
+              <td>Clip-path</td>
+              <td>2 elements required: <a href="#test_outline">[P]</a> and <a href="#test_outline">[B]</a> <br>
+                    [P] - Parent element <br>
+                    [B] - Child element with <code>mix-blend-mode</code> other than normal
+                    and <code>clip-path</code> specified to a basic shape (e.g. ellipse)</td>
+              <td>The colors of the parent and the clipped child are mixed ([P] and [B])</td>
             </tr>
             <tr>
               <td>filter</td>
