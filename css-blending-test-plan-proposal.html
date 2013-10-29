@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>[WORK IN PROGRESS] - CSS Compositing and Blending test plan</title>
+		<title>[WORK IN PROGRESS] - Compositing and Blending test plan</title>
 		<meta charset='utf-8'>
 		<script src='http://www.w3.org/Tools/respec/respec-w3c-common'
 						async class='remove'></script>
@@ -37,7 +37,7 @@
 		<section id='abstract'>
 			<p>
 				This document is intended to be used as a guideline for the testing
-				activities related to the CSS Compositing and Blending spec [[!compositing-1]]. Its main
+				activities related to the Compositing and Blending spec [[!compositing-1]]. Its main
 				goal is to provide an overview of the general testing areas and an informative
 				description of possible test cases.
 			</p>
@@ -57,9 +57,7 @@
 		<section>
 			<h2>Goals</h2>
 			<p>
-				To ensure a comprehensive test suite with useful, high quality tests, a
-				number of goals are proposed. They range from process goals (how to
-				conduct testing) to implementation goals (how to write good tests).
+				To ensure a comprehensive test suite with useful, high quality tests.
 			</p>
 			<section>
 				<h3>Providing guidance on testing</h3>
@@ -88,32 +86,53 @@
 		<section>
 			<h2>Approach</h2>
 			<p>
-				Since CSS blending has only a few sets of CSS properties,
-				the approach is to deep dive every aspect of the spec as much as possible.
+				Since CSS blending has only three new CSS properties,
+				the approach is to deep dive into every aspect of the spec as much as possible.
 
 				Tests will be created for the testing areas listed in <a href="#testig-areas" class="sectionRef"></a>
 				and having as guidance the test cases description from <a href="#test-cases-description" class="sectionRef"></a>.
 			</p>
 		</section>
 		<section>
-			<h2>Testig areas</h2>
+			<h2>Testing areas</h2>
 			<section>
 				<h3>Explicit testing area</h3>
-				<p>Below is the list of explicit testing areas</p>
+				    <p>
+			          These are testing areas normatively defined by the spec. They cover
+			          things explicitly or implicitly defined in the Blending and Compositing spec.
+			          Please note that while detailed, this list is not necessarily
+			          exhaustive and normative behaviors may not be contained in it.
+			          When in doubt, consult the Blending and Compositing spec or ask a question on the
+			          <a href="http://lists.w3.org/Archives/Public/www-style/">mailing
+			          list</a>.
+			        </p>
+				<p>Below is the list of explicit testing areas:</p>
 				<ol>
-					<li>Proper parsing of the CSS properties and rules, rendering according to the spec.</li>
-					<ul><code>mix-blend-mode</code></ul>
-					<ul><code>isolation</code></ul>
-					<ul><code>background-blend-mode</code></ul>
+					<li>Proper parsing of the CSS properties and rules, rendering according to the spec.
+						<ul><code>mix-blend-mode</code></ul>
+						<ul><code>isolation</code></ul>
+						<ul><code>background-blend-mode</code></ul>
+					</li>
 					<li>SVG blending</li>
 					<li>Canvas 2D blending</li>
 				</ol>
 			</section>
 			<section>
 				<h3>Implicit testing areas</h3>
-				<p>Below is the list of implicit testing areas</p>
+		        <p>
+		          These are testing areas either normatively defined in other specs
+		          that explicitly refer to the Blending and Compositing spec (e.g. [[!css-transforms]])
+		          or simply not explicitly defined, but implied by various aspects of
+		          the spec (e.g. processing model, CSS 2.1 compliance, etc.).
+		          Please note that while detailed, this list is not necessarily
+		          exhaustive and normative behaviors may not be contained in it.
+		          When in doubt, consult the Blending and Compositing spec or ask a question on the
+		          <a href="http://lists.w3.org/Archives/Public/www-style/">mailing
+		          list</a>.
+		        </p>
+				<p>Below is the list of implicit testing areas:</p>
 				<ol>
-						<li>CSS blending diffrent types of elements
+						<li>Blending diffrent types of elements
 							<ul>
 								<li><code>&lt;video&gt;</code></li>
 								<li><code>&lt;canvas&gt;</code></li>
@@ -129,6 +148,9 @@
 				<h2>Test cases description</h2>
 				<section>
 					<h3>Test cases for <code>mix-blend-mode</code></h3>
+					<p>
+						The following diagram describes a list of notations to be used later on in the document as well as the general document structure the test cases will follow.The test cases should not be limited to this structure. This should be a wireframe and people are encouraged to bring even more complex test cases.
+					</p>
 					<p>
 						<img id="test_outline" src="test_template.png" alt="Mix-blend-mode sample elements">
 					</p>
