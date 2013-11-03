@@ -168,9 +168,8 @@
 						</pre>
                     <p> Unless otherwise stated, test cases asumes the following properties for the elements: <br>
                         <ul>
-                        <li> [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>)  </li>
-                        <li> [B] - element with <code>mix-blend-mode</code> other than normal </li>
-                        <li> <code>background-color</code> set to a fully opaque color for all the elements, except the <code>body</code> </li>
+                        <li> default value for the <code>background-color</code> of the <code>body</code></li>
+                        <li> <code>background-color</code> set to a fully opaque color for all the other elements </li>
                         </ul>
                     </p>
                     <p>The CSS associated to the elements used in the tests shouldn't use properties that creates a stacking context, except the ones specified in the test case descriptions.</p>
@@ -187,7 +186,8 @@
 							</tr>
 							<tr>
 								<td>Simple <code>&lt;div&gt;</td>
-								<td>1 element required: <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a>
+								<td>1 element required: <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal
 								 </td>
 								<td>The element [B] creates a stacking context - the computed value of <q>z-index</q> has a value other than <q>auto</q>   </td>
 							</tr>
@@ -204,21 +204,26 @@
                             </tr>
 							<tr>
 								<td>Blending simple elements </td>
-								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and  <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a></td>
+								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and  <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal
+                                </td>
 								<td>The color of the parent element [P] mixes with the color of the child element [B].</td>
 							</tr>
     						<tr>
     							<td>Blending <code>&lt;video&gt;</code></td>
     							<td>2 elements required: <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Sibling of the element [B]">[IN-S]</a> <br>
-									[B] - <code>&lt;video&gt;</code> element with <code>mix-blend-mode</code> other than normal<br>
+                                    [B] - <code>&lt;video&gt;</code> element with <code>mix-blend-mode</code> other than normal <br>
                                     [IN-S] - sibling(of the element [B]) visually overlaping the <code>&lt;video&gt;</code> element <br>
-                                     [IN-S] has some text inside
+                                    [IN-S] has some text inside
 							</td>
     							<td>The content of the <code>video</code> element [B] mixes with the colors of the sibling element and the text from [IN-S].</td>
     						</tr>
                             <tr>
                                 <td>Blending with a sibling</td>
                                 <td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Sibling of the element [B]">[IN-S]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
                                     [IN-S] - sibling of the element [B] <br>
                                     The [IN-S] element visually overlaps the [B] element
                                 </td>
@@ -227,6 +232,8 @@
                             <tr>
                                 <td>Blending with two levels of ascendants</td>
                                 <td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="child of the element [P]">[IN-P]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
                                     [IN-P] - Intermediate child element between the parent [P] and the child [B]
                                 </td>
                                 <td>The colors of the parent element [P] and the child element [IN-P] mixes with the color of the blended element [B].</td>
@@ -245,6 +252,8 @@
 							<tr>
 								<td>Blending child overflows the parent</td>
 								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
                                     The blending element [B] has content that lies outside the parent element. <br>
 									Set the <code>background-color</code> of the <code>body</code> to a value other than default</td>
 								<td>The color of the parent element mixes with the color of the child element. <br>
@@ -253,7 +262,9 @@
 							<tr>
 								<td>Parent with transparent pixels</td>
 								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-									[P] - Element with some text inside and default value for <code>background-color</code> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+									The element has some text inside and default value for <code>background-color</code> <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
 									The <code>background-color</code> of the <code>body</code> has a value other than default</td>
 								<td>The color of the text from the parent element [P] mixes with the color of the child element [B]. <br>
 								No blending between the color of the <code>body</code> and the color of the blending element [B].
@@ -262,8 +273,10 @@
                             <tr>
                                 <td>Parent with <code>border-radius</code></td>
                                 <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                        [P] - With <code>border-radius</code> specified (e.g.50%). <br><br>
-                                        [B] - has content that lies outside the parent element, over a rounded corner. <br>
+                                        [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                        [P] has <code>border-radius</code> specified (e.g.50%). <br>
+                                        [B] - element with <code>mix-blend-mode</code> other than normal <br>
+                                        [B] has content that lies outside the parent element, over a rounded corner. <br>
                                         The <code>background-color</code> of the <code>body</code> has a value other than default. </td>
                                 <td>The color of the parent element mixes with the color of the child element. <br>
                                      The area of the child element which draws over the rounded corner doesn't mix with the color of the <code>body</code></td>
@@ -281,7 +294,9 @@
                             </tr>
 							<tr>
 								<td>Child of the blended element has opacity</td>
-								<td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Child of the lement [B]">[CB]</a> <br> <br>
+								<td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Child of the lement [B]">[CB]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
 									[CB] - child of the element [B] with <code>opacity</code> less than one. </td>
 								<td>The group created by the two child elements([B] and [CB]) is blended with the parent element [P]. <br>
 								No blending between [B] and [CB]</td>
@@ -289,6 +304,8 @@
 							<tr>
 								<td>Overflowed child of the blended element</td>
 								<td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Child of the lement [B]">[CB]</a> <br>
+                                        [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                        [B] - element with <code>mix-blend-mode</code> other than normal <br>
 										[CB] - child of the element [B] with content that lies outside the parent element [B].
                                 </td>
 								<td>The group created by the two child elements([B] and [CB]) is blended with the parent element [P]. <br>
@@ -297,7 +314,8 @@
                             <tr>
                                 <td>Blended element with transparent pixels</td>
                                 <td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Child of the lement [B]">[CB]</a> <br>
-                                    [B] - with transparent <code>background-color</code> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal and transparent <code>background-color</code> <br>
                                     [CB] - child of the element [B]
                                 </td>
                                 <td>The group created by the two child elements([B] and [CB]) is blended with the parent element [P]. <br>
@@ -316,7 +334,9 @@
                             <tr>
                                 <td>Parent with 3D transform</td>
                                 <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and  <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                     [P] - with <code>3D transform</code>. <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [P] has <code>3D transform</code> <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal
                                 <td>The color of the parent element [P] mixes with the color of the child element [B] <br>
                                     The element (and the content) of the element [P] is properly transformed
                                 </td>
@@ -324,16 +344,18 @@
                             <tr>
                                 <td>Blended element with 3D transform</td>
                                 <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Child of the lement [B]">[CB]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal and <code>3D transform</code> </td>
                                     [CB] - child of the element [B]
-                                    [B] - with <code>3D transform</code> </td>
                                 <td> The color of the parent element [P] mixes with the color of the child element [B] <br>
                                     The element (and the content) of the element [P] is properly transformed </td>
                             </tr>
                             <tr>
                                 <td>Both parent and blended element with 3D transform</td>
                                 <td> 2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and  <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                    [P] - with <code>3D transform</code>. <br>
-                                    [B] - with <code>3D transform</code>.
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [P] with <code>3D transform</code> <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal and <code>3D transform</code>
                                 </td>
                                 <td>The color of the parent element [P] mixes with the color of the child element [B] <br>
                                     The elements (and the content) of the elements [P]  and [B] are properly transformed</td>
@@ -341,7 +363,8 @@
                             <tr>
                                 <td>Blended element with transform and preserve-3d</td>
                                 <td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Child of the lement [B]">[CB]</a> <br>
-                                        [B] - has transform with <code>transform-style:preserve-3d</code> <br>
+                                        [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                        [B] - element with <code>mix-blend-mode</code> other than normal and transform with <code>transform-style:preserve-3d</code> <br>
                                         [CB] - child of the element [B]. It has 3D transform property</td>
                                 <td> The child element [CB] will NOT preserve its 3D position. <br>
                                 <code>mix-blend-mode</code> override the behavior of <code>transform-style:preserve-3d</code>:
@@ -351,7 +374,8 @@
                             <tr>
                                 <td>Blended element with transform and perspective</td>
                                 <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                        [B] - has transform with <code>perspective</code> set to positive length </td>
+                                        [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                        [B] - element with <code>mix-blend-mode</code> other than normal and transform with <code>perspective</code> set to positive length </td>
                                 <td>[Check] The colors of the parent and the child are mixed ([P] and [B]) <br>
                                     The element (and the content) of the element [B] is properly transformed
                                 </td>
@@ -359,6 +383,8 @@
                             <tr>
                                 <td>Sibling with 3D transform between the parent and the blended element</td>
                                 <td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Sibling of the element [B]">[IN-S]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
                                     [IN-S] - Sibling(of the element [B]) with <code>3D transform</code> between the parent [P] and the child [B]
                                      </td>
                                 <td>The colors of the parent element [P] and the transformed sibling element [IN-S] mixes with the color of the blended element [B].<br>
@@ -368,7 +394,9 @@
                             <tr>
                                 <td>Parent with 3D transform and transition</td>
                                 <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and  <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                     [P] - has <code>3D transform</code> and transition. <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [P] has <code>3D transform</code> and transition <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal
                                 <td>The color of the parent element [P] mixes with the color of the child element [B] <br>
                                     The element (and the content) of the element [P] is properly transformed
                                 </td>
@@ -376,6 +404,8 @@
                             <tr>
                                 <td>Sibling with 3D transform(and transition) between the parent and the blended element</td>
                                 <td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Sibling of the element [B]">[IN-S]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
                                     [IN-S] - sibling(of the element [B]) with <code>3D transform</code> and transition between the parent [P] and the child [B]
                                      </td>
                                 <td>The colors of the parent element [P] and the transformed sibling element [IN-S] mixes with the color of the blended element [B].<br>
@@ -390,8 +420,9 @@
                             <tr>
                                 <td>Parent element with <code>overflow:scroll</code> </td>
                                 <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                     [P] - has <code>overflow:scroll</code>. <br>
-                                     [B] - should overflow the parents [P] dimensions so that it creates scrolling for the parent
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [P] has <code>overflow:scroll</code> <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal tat overflows the parents [P] dimensions so that it creates scrolling for the parent
                                 <td>The color of the parent element [P] mixes with the color of the child element [B]. <br>
                                     The scrolling mechanism is not affected.
                                 </td>
@@ -399,7 +430,8 @@
                             <tr>
                                 <td>Blended element with <code>overflow:scroll</code></td>
                                 <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                     [B] - has <code>overflow:scroll</code> and a child element that creates overflow for [B]</td>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal, <code>overflow:scroll</code> and a child element that creates overflow for [B]</td>
                                 <td>The color of the parent element [P] mixes with the color of the child element [B] <br>
                                     The scrolling mechanism is not affected.
                                 </td>
@@ -407,8 +439,9 @@
                             <tr>
                                 <td>Parent element with <code>overflow:scroll</code> and blended with <code>position:fixed</code> </td>
                                 <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                     [P] - has <code>overflow:scroll</code> <br>
-                                     [B] - has <code>position:fixed</code> and should overflow the parents [P] dimensions so that it creates scrolling for the parent</td>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [P] has <code>overflow:scroll</code> <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal, <code>position:fixed</code> and should overflow the parents [P] dimensions so that it creates scrolling for the parent</td>
                                 <td>The color of the parent element [P] mixes with the color of the child element [B] <br>
                                     The blending happens when scrolling the content of the parent element [P] too. <br>
                                     The scrolling mechanism is not affected.
@@ -417,8 +450,9 @@
                             <tr>
                                 <td>Parent with <code>overflow:hidden</code> and <code>border-radius</code></td>
                                 <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                    [P] - has <code>overflow:hidden</code> and <code>border-radius</code> specified (e.g.50%) <br>
-                                    [B] - has content that lies outside the parent element, over a rounded corner. <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [P] has <code>overflow:hidden</code> and <code>border-radius</code> specified (e.g.50%) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal with content that lies outside the parent element, over a rounded corner <br>
                                     Set the <code>background-color</code> of the <code>body</code> to a value other than default.</td>
                                 <td>The color of the parent element mixes with the color of the child element. <br>
                                     The area of the child element which draws over the rounded corner is properly cut </td>
@@ -426,7 +460,8 @@
                             <tr>
                                 <td>Blended element with <code>overflow:hidden</code> and <code>border-radius</code></td>
                                 <td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="Child of the lement [B]">[CB]</a> <br>
-                                    [B] - with <code>overflow:hidden</code> and <code>border-radius</code> specified (e.g.50%). <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal, <code>overflow:hidden</code> and <code>border-radius</code> specified (e.g.50%). <br>
                                     [CB] - child of the element [B], with content that lies outside the parent element, over a rounded corner. <br> </td>
                                 <td>The group created by the two child elements([B] and [CB]) is blended with the parent element [P]. <br>
                                     No blending between [B] and [CB]. <br>
@@ -435,8 +470,9 @@
                             <tr>
                                 <td>Intermediate child with <code>overflow:hidden</code> and <code>border-radius</code> between the parent and the blended element</td>
                                 <td>3 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>, <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> and <a href="#test_outline" title="child of the element [P]">[IN-P]</a> <br>
-                                    [IN-P] - child(of the element [P]) with <code>overflow:hidden</code> and <code>border-radius</code> specified (e.g.50%). <br>
-                                    [B] - should overflow the parents [IN-P] dimensions
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal that overflows the parents [IN-P] dimensions
+                                    [IN-P] - child(of the element [P]) with <code>overflow:hidden</code> and <code>border-radius</code> specified (e.g.50%)
                                      </td>
                                 <td>The colors of the parent element [P] and the child element [IN-P] mixes with the color of the blended element [B]. <br>
                                     [B] is is properly clipped so no overflow is visible
@@ -455,7 +491,8 @@
 						<tr>
 							<td>Blended element with <code>border-image</code> </td>
 							<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-								[B] - with <code>border-image</code> specified as a png file
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+								[B] - element with <code>mix-blend-mode</code> other than normal and <code>border-image</code> specified as a png file
 							</td>
 							<td>The color of the parent element [P] mixes with the color of the child element. <br>
 								The color of the <code>border-image</code> mixes with the color of the parent element [P].
@@ -473,6 +510,7 @@
                         <tr>
                             <td>Blended <code>&lt;canvas&gt;</code></td>
                             <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
                                 [B] - Child <code>&lt;canvas&gt;</code> element with <code>mix-blend-mode</code> other than normal
                             </td>
                             <td>The color of the <code>&lt;canvas&gt;</code> element [B] mixes with the color of the parent element [P] .</td>
@@ -480,6 +518,7 @@
                         <tr>
                             <td>Blended <code>&lt;video&gt;</code></td>
                             <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
                                 [B] - <code>&lt;video&gt;</code> element with <code>mix-blend-mode</code> other than normal
                             </td>
                             <td>The color of the <code>&lt;video&gt;</code> element mixes with the color of the parent element [P] .</td>
@@ -496,70 +535,81 @@
                         <tr>
                             <td>Blended <code>&lt;iframe&gt;</code></td>
                             <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                [B] - <code>&lt;iframe&gt;</code> element
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                [B] - <code>&lt;iframe&gt;</code> element with <code>mix-blend-mode</code> other than normal
                             </td>
                             <td>The color of the <code>&lt;iframe&gt;</code> element [B] mixes with the color of the parent element [P]. </td>
                         </tr>
 						<tr>
 							<td>Blended element with <code>mask</code> property</td>
 							<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-								[B] - with <code>mask</code> specified to an SVG image (e.g. circle)</td>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                [B] - element with <code>mix-blend-mode</code> other than normal and <code>mask</code> property specified to an SVG image (e.g. circle)</td>
 							<td>The colors of the parent and the masked child are mixed ([P] and [B])</td>
 						</tr>
 						<tr>
 							<td>Blended element with <code>clip-path</code> property </td>
 							<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-									[B] - with <code>clip-path</code> property specified to a basic shape (e.g. ellipse)</td>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+								[B] - element with <code>mix-blend-mode</code> other than normal and <code>clip-path</code> property specified to a basic shape (e.g. ellipse)</td>
 							<td>The colors of the parent and the clipped child are mixed ([P] and [B])</td>
 						</tr>
 						<tr>
 							<td>Blended element with <code>filter</code> property</td>
 							<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-								[B] - with <code>filter</code> property value other than none </td>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+								[B] - element with <code>mix-blend-mode</code> other than normal and <code>filter</code> property value other than none </td>
 							<td>The filter is applied and the result is mixed with the parent element</td>
 						</tr>
 						<tr>
 							<td>Blended element with <code>transition</code></td>
 								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-									[B] - with <code>transition-property</code> for <code>opacity</code> </td>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+									[B] - element with <code>mix-blend-mode</code> other than normal and <code>transition-property</code> for <code>opacity</code> </td>
 							<td>The transition is applied and the result is mixed with the parent element</td>
 						</tr>
 							<tr>
 							<td>Blended element with <code>animation</code></td>
 							<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-								[B] - with <code>animation</code> specified</td>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+								[B] - element with <code>mix-blend-mode</code> other than normal and <code>animation</code> specified</td>
 							<td>The animation is applied to the child element and the result is mixed with the parent element</td>
 						</tr>
                         <tr>
                             <td>Image element</td>
                             <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                    [B] - <code>&lt;img&gt;</code> element (.jpeg or .gif image) </td>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                [B] - <code>&lt;img&gt;</code> element (.jpeg or .gif image) with <code>mix-blend-mode</code> other than normal</td>
                             <td>The color of the <code>&lt;img&gt;</code> is mixed with the color of the <code>&lt;div&gt;</code>.</td>
                         </tr>
                         <tr>
                             <td>SVG element</td>
                             <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                [B] - SVG element </td>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                [B] - SVG element with <code>mix-blend-mode</code> other than normal</td>
                             <td>The color of the SVG is mixed with the color of the <code>&lt;div&gt;</code>.</td>
                         </tr>
                         <tr>
                             <td>Paragraph element</td>
                             <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                [B] - paragraph element</td>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                [B] - paragraph element with <code>mix-blend-mode</code> other than normal</td>
                             <td>The color of the text from the paragraph element is mixed with the color of the <code>&lt;div&gt;</code></td>
                         </tr>
                         <tr>
                             <td>Paragraph element and background-image</td>
                             <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                [P] - Parent <code>&lt;div&gt;</code> element with <code>background-image</code> <br>
-                                [B] - Child <code>p</code> element with some text</td>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                 and  <code>background-image</code> <br>
+                                [B] - Child <code>p</code> element with some text and <code>mix-blend-mode</code> other than normal</td>
                             <td>The color of the text from the <code>p</code> element is mixed with the background image of the <code>&lt;div&gt;</code>.</td>
                         </tr>
                         <tr>
                             <td>Set blending from JavaScript</td>
                             <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                    [B] - Child <code>&lt;div&gt;</code> element with no <code>mix-blend-mode</code> specified<br>
-                                    From JavaScript, set the <code>mix-blend-mode</code> property for the child <code>&lt;div&gt;</code> [B] to a value other than normal.</td>
+                                [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                [B] - Child <code>&lt;div&gt;</code> element with no <code>mix-blend-mode</code> specified<br>
+                                From JavaScript, set the <code>mix-blend-mode</code> property for the child <code>&lt;div&gt;</code> to a value other than normal</td>
                             <td>The colors of the <code>&lt;div&gt;</code> elements are mixed.</td>
                         </tr>
 					</table>
