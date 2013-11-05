@@ -157,13 +157,13 @@
 					<p>The intended structure of the document is the following:</p>
 						<pre>
 &lt;body&gt;
-	&lt;div id="[P]"&gt;
-		&lt;div id="[IN-S]"&gt;&lt;/div&gt;
-		&lt;div id="[IN-P]"&gt;
-			&lt;div id="[B]"&gt;
-				&lt;div id="[CB]"&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		 &lt;/div&gt;
+  &lt;div id="[P]"&gt;
+    &lt;div id="[IN-S]"&gt;&lt;/div&gt;
+    &lt;div id="[IN-P]"&gt;
+      &lt;div id="[B]"&gt;
+      &lt;div id="[CB]"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/body&gt;
 						</pre>
 					<p> Unless otherwise stated, test cases asumes the following properties for the elements: <br>
@@ -334,8 +334,7 @@
 							<tr>
 								<td>Parent with 3D transform</td>
 								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and  <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-									[P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
-									[P] has <code>3D transform</code> <br>
+									[P] - parent element with <code>3D transform</code> <br>
 									[B] - element with <code>mix-blend-mode</code> other than normal
 								<td>The color of the parent element [P] mixes with the color of the child element [B] <br>
 									The element (and the content) of the element [P] is properly transformed
@@ -353,8 +352,7 @@
 							<tr>
 								<td>Both parent and blended element with 3D transform</td>
 								<td> 2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and  <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-									[P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
-									[P] with <code>3D transform</code> <br>
+									[P] - parent element with <code>3D transform</code> <br>
 									[B] - element with <code>mix-blend-mode</code> other than normal and <code>3D transform</code>
 								</td>
 								<td>The color of the parent element [P] mixes with the color of the child element [B] <br>
@@ -394,8 +392,7 @@
 							<tr>
 								<td>Parent with 3D transform and transition</td>
 								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and  <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-									[P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
-									[P] has <code>3D transform</code> and transition <br>
+									[P] - parent element with <code>3D transform</code> and transition <br>
 									[B] - element with <code>mix-blend-mode</code> other than normal
 								<td>The color of the parent element [P] mixes with the color of the child element [B] <br>
 									The element (and the content) of the element [P] is properly transformed
