@@ -31,7 +31,7 @@
 			};
 		</script>
 		<style>
-		table
+			table
 			{
 				border-collapse:collapse;
 			}
@@ -1457,72 +1457,101 @@
 						</tr>
 						<tr>
 							<td>Isolation isolate</td>
-							<td>Have an element with <code>isolation</code> set to <code>isolate</code>
-
-<!-- 								1 element required: <a href="#test_outline" title=title="child of the element [P]">[IN-P]</a> <br>
-								[IN-P] - element with <code>isolation</code> set to <code>isolate</code>
- -->
-							</td>
-							<td>The element creates a stacking context - the computed value of its <q>z-index</q> has a value other than <q>auto</q>   </td>
-						</tr>
-						<tr>
-							<td>Isolation auto</td>
-							<td>Have an element with <code>isolation</code> explicitly set to <code>auto</code>, and no other style that would create a stacking context</td>
-							<td>The element does not create a stacking context - the computed value of its <q>z-index</q> is value <code>auto</code></td>
+							<td>Have an element with <code>isolation</code> set to <code>isolate</code></td>
+							<td>The element creates a stacking context - the computed value of its <code>z-index</code> has a value other than <code>auto</code></td>
 						</tr>
 					</table>
 				</section>
 
-
 				<section>
 					<h4>An element with <code>isolation:isolate</code> creates an isolated group for blended children</h4>
-						<table>
-                            <tr>
-                                <th>Test name</th>
-                                <th>Elements and styles</th>
-                                <th>Expected result</th>
-                            </tr>
-							<tr>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
 							<td>Isolation of blended child which overflows</td>
 							<td>3 elements required:
 								<a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>,
 								<a href="#test_outline" title="child of the element [P]">[IN-P]</a> and
 								<a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+								[P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
 								[IN-P] - Intermediate child element between the parent [P] and the child [B]<br>
-                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
-                                    The blending element [B] has content that lies outside the parent element. <br>
+								This element has <code>isolation:isolate</code> set.<br>
+								[B] - element with <code>mix-blend-mode</code> other than <code>normal</code> <br>
+								The blending element [B] has content that lies outside the parent element. <br>
 							</td>
 							<td>
-								The color of the child element [B] only mixes with the color of the intermediate parent element [IN-P], where they overlap.<br>
-								The area of the child element outside of the intermediate parent element does not mix with the color of the parent element [P], or of the <code>body</code>
+								The color of the child element [B] mixes with the color of the intermediate element [IN-P], where they overlap.<br>
+								The area of the child element outside of the intermediate parent element does not mix with the color of the parent element [P], or of the <code>body</code>.
 							</td>
-							</tr>
-						<!--
-							<tr>
-								<td>Parent with transparent pixels</td>
-								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
-									The element has some text inside and default value for <code>background-color</code> <br>
-                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
-									The <code>background-color</code> of the <code>body</code> has a value other than default</td>
-								<td>The color of the text from the parent element [P] mixes with the color of the child element [B]. <br>
-								No blending between the color of the <code>body</code> and the color of the blending element [B].
-                                 </td>
-							</tr>
-                            <tr>
-                                <td>Parent with <code>border-radius</code></td>
-                                <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
-                                        [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
-                                        [P] has <code>border-radius</code> specified (e.g.50%). <br>
-                                        [B] - element with <code>mix-blend-mode</code> other than normal <br>
-                                        [B] has content that lies outside the parent element, over a rounded corner. <br>
-                                        The <code>background-color</code> of the <code>body</code> has a value other than default. </td>
-                                <td>The color of the parent element mixes with the color of the child element. <br>
-                                     The area of the child element which draws over the rounded corner doesn't mix with the color of the <code>body</code></td>
-						</tr> -->
-						</table>
-					</section>
+						</tr>
+						<tr>
+							<td>Intermediate element with transparent pixels</td>
+							<td>3 elements required:
+								<a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>,
+								<a href="#test_outline" title="child of the element [P]">[IN-P]</a> and
+								<a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+								[P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>); the element <code>background-color</code> is other than <code>transparent</code><br>
+								[IN-P] - Intermediate child element between the parent [P] and the child [B]<br>
+								The intermediate element has text content, default value for <code>background-color</code> and <code>isolation:isolate</code> set<br>
+								[B] - element with <code>mix-blend-mode</code> other than <code>normal</d <br>
+							<td>
+								The color of the child element [B] mixes with the color of the intermediate element [IN-P], where they overlap.<br>
+								There is no blending between the color of the parent element [P] and the color of the blended element [B].
+							</td>
+						</tr>
+						<tr>
+							<td>Isolate inside a stacking context created by a 3d transform</td>
+							<td>
+								3 elements required:
+								<a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a>,
+								<a href="#test_outline" title="child of the element [P]">[IN-P]</a> and
+								<a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+								[P] - parent element with a <code>3D transform</code> applied<br>
+								[IN-P] - Intermediate child element between the parent [P] and the child [B]<br>
+								The intermediate element has <code>isolation:isolate</code> set<br>
+								[B] - element with <code>mix-blend-mode</code> other than <code>normal</code><br>
+							</td>
+							<td>
+								The color of the child element [B] mixes with the color of the intermediate element [IN-P], where they overlap.<br>
+								There is no blending between the color of the parent element [P] and the color of the blended element [B].
+							 </td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4>An element with <code>isolation:auto</code> set does not change the elements existing stacking context behavior</h4>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td>Isolation auto</td>
+							<td>Have an element with <code>isolation</code> explicitly set to <code>auto</code>, and no other style that would create a stacking context</td>
+							<td>The element does not create a stacking context - the computed value of its <code>z-index</code> is value <code>auto</code></td>
+						</tr>
+						<tr>
+							<td>Stacking context not affected by isolation</td>
+							<td>2 elements required:
+								<a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and
+								<a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+								[P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>); This element has <code>isolation</code> explicitly set to <code>auto</code> <br>
+								[B] - element with <code>mix-blend-mode</code> other than <code>normal</d <br>
+								The blending element [B] has content that lies outside the parent element. <br>
+								Set the <code>background-color</code> of the <code>body</code> to a value other than default
+							</td>
+							<td>The color of the parent element mixes with the color of the child element. <br>
+								The area of the child element outside of the parent element doesn't mix with the color of the <code>body</code>.<br>
+								In other words, setting the <code>isolation</code> to <code>auto</code> does not affect the creation of a stacking context by other properties.
+							</td>
+						</tr>
+					</table>
+				</section>
 			</section>
 	</body>
 </html>
