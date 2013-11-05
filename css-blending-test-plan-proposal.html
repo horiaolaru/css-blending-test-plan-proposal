@@ -174,13 +174,13 @@
 					<p>The intended structure of the document is the following:</p>
 						<pre>
 &lt;body&gt;
-  &lt;div id="[P]"&gt;
-    &lt;div id="[IN-S]"&gt;&lt;/div&gt;
-    &lt;div id="[IN-P]"&gt;
-      &lt;div id="[B]"&gt;
-      &lt;div id="[CB]"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+	&lt;div id="[P]"&gt;
+		&lt;div id="[IN-S]"&gt;&lt;/div&gt;
+		&lt;div id="[IN-P]"&gt;
+			&lt;div id="[B]"&gt;
+				&lt;div id="[CB]"&gt;&lt;/div&gt;
+			&lt;/div&gt;
+		 &lt;/div&gt;
 &lt;/body&gt;
 						</pre>
 					<p> Unless otherwise stated, test cases asumes the following properties for the elements: <br>
@@ -1443,6 +1443,51 @@
 						</tr>
 					</table>
 				</section>
+			<section>
+					<h3>Test cases for <code>isolation</code></h3>
+											<h4>An element with <code>mix-blend-mode</code> doesn't blend with anything outside the current stacking context</h4>
+                        <p>Refers to the following assertion in the <a href="http://dev.w3.org/fxtf/compositing-1/#csscompositingrules_CSS">spec</a>: <q> An element that has blending applied, must blend with all the underlying content of the stacking context [CSS21] that that element belongs to.</q></p>
+						<table>
+                            <tr>
+                                <th>Test name</th>
+                                <th>Elements and styles</th>
+                                <th>Expected result</th>
+                            </tr>
+							<tr>
+								<td>Blending child overflows the parent</td>
+								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
+                                    The blending element [B] has content that lies outside the parent element. <br>
+									Set the <code>background-color</code> of the <code>body</code> to a value other than default</td>
+								<td>The color of the parent element mixes with the color of the child element. <br>
+									 The area of the child element outside of the parent element doesn't mix with the color of the <code>body</code></td>
+							</tr>
+							<tr>
+								<td>Parent with transparent pixels</td>
+								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+                                    [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+									The element has some text inside and default value for <code>background-color</code> <br>
+                                    [B] - element with <code>mix-blend-mode</code> other than normal <br>
+									The <code>background-color</code> of the <code>body</code> has a value other than default</td>
+								<td>The color of the text from the parent element [P] mixes with the color of the child element [B]. <br>
+								No blending between the color of the <code>body</code> and the color of the blending element [B].
+                                 </td>
+							</tr>
+                            <tr>
+                                <td>Parent with <code>border-radius</code></td>
+                                <td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
+                                        [P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
+                                        [P] has <code>border-radius</code> specified (e.g.50%). <br>
+                                        [B] - element with <code>mix-blend-mode</code> other than normal <br>
+                                        [B] has content that lies outside the parent element, over a rounded corner. <br>
+                                        The <code>background-color</code> of the <code>body</code> has a value other than default. </td>
+                                <td>The color of the parent element mixes with the color of the child element. <br>
+                                     The area of the child element which draws over the rounded corner doesn't mix with the color of the <code>body</code></td>
+                            </tr>
+						</table>
+					</section>
+			</section>
 		</section>
 	</body>
 </html>
