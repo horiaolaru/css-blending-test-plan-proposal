@@ -10,10 +10,23 @@
 			var respecConfig = {
 					specStatus: "unofficial",
 					shortName:  "css3-blending-test-plan",
-					editors: [
-								{   name:       "Mirela Budaes",
-										company:    "Adobe Systems, Inc.",
-										companyURL: "http://www.adobe.com/" }
+					editors: [ 
+								{
+									name: "Mirela Budaes",
+									company: "Adobe Systems, Inc.",
+									companyURL: "http://www.adobe.com/"
+								},
+								{
+									name: "Horia Olaru",
+									company: "Adobe Systems, Inc.",
+									companyURL: "http://www.adobe.com/"
+								},
+								{
+									name: "Mihai Tica",
+									company: "Adobe Systems, Inc.",
+									companyURL: "http://www.adobe.com/"
+								},
+
 					]
 			};
 		</script>
@@ -618,7 +631,8 @@
 			<section>
 				<h3>Test cases for SVG elements with <code>mix-blend-mode</code></h4>
 				<section>
-					<h4>Simple SVG graphical elements with <code>mix-blend-mode</code></h4>
+					<h4><code>mix-blend-mode</code> with simple SVG graphical elements</h4>
+					<p><code>mix-blend-mode</code> applies to svg, g, use, image, path, rect, circle, ellipse, line, polyline, polygon, text, tspan, and marker.</p>
 					<table>
 						<tr>
 							<th>Test name</th>
@@ -626,196 +640,226 @@
 							<th>Expected result</th>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Circle with SVG background</td>
+							<td>Set a background color for the SVG. Create 16 <code>circle</code> elements and fill them with a solid color. Apply each <code>mix-blend-mode</code> on them.</td>
+							<td>The color of the <code>circle</code> is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Ellipse with SVG background</td>
+							<td>Set a background color for the SVG. Create an <code>ellipse</code> element and fill it with a solid color. Apply a <code>mix-blend-mode</code> on it other than <code>normal</code>.</td>
+							<td>The color of the <code>ellipse</code> is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Image with SVG background</td>
+							<td>Set a background color for the SVG. Create an <code>image</code> element and apply a <code>mix-blend-mode</code> other than <code>normal</code>.</td>
+							<td>The <code>image</code> is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Line with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>line</code> element and fill it with a solid color. Apply a <code>mix-blend-mode</code> on it other than <code>normal</code>.</td>
+							<td>The color of the <code>line</code> is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Path with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>path</code> element and fill it with a solid color. Apply a <code>mix-blend-mode</code> on it other than <code>normal</code>.</td>
+							<td>The color of the <code>path</code> is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Polygon with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>polygon</code> element and fill it with a solid color. Apply a <code>mix-blend-mode</code> on it other than <code>normal</code>.</td>
+							<td>The color of the <code>polygon</code> is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Polyline with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>polyline</code> element and fill it with a solid color. Apply a <code>mix-blend-mode</code> on it other than <code>normal</code>.</td>
+							<td>The color of the <code>polyline</code> is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Rect with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element and fill it with a solid color. Apply a <code>mix-blend-mode</code> on it other than <code>normal</code>.</td>
+							<td>The color of the <code>rect</code> is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Text with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>text</code> element and apply a <code>mix-blend-mode</code> other than <code>normal</code>.</td>
+							<td>The text is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Text having tspan with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>text</code> element and a <code>tspan</code> inside it. Apply a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>tspan</code>.</td>
+							<td>The text is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Gradient with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element and fill it with a <code>gradient</code>. Apply a <code>mix-blend-mode</code> on it other than normal.</td>
+							<td>The gradient is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Pattern with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element and fill it with a <code>pattern</code>. Apply a <code>mix-blend-mode</code> on it other than normal.</td>
+							<td>The pattern is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Set blending on an element from JavaScript</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element and fill it with a solid color. Apply a <code>mix-blend-mode</code> (other than <code>normal</code>) on it from script.</td>
+							<td>The color of the <code>rect</code> is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Marker with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>line</code> element containing a marker. Apply a <code>mix-blend-mode</code> other than <code>normal</code> on the marker.</td>
+							<td>The marker color is mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Metadata with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>metadata</code> element containing an embedded pdf. Apply a <code>mix-blend-mode</code> other than <code>normal</code> on the marker.</td>
+							<td>The metadata is not mixed with the color of the background.</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>ForeignObject with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>foreignObject</code> element containing a simple xhtml file. Apply a <code>mix-blend-mode</code> other than <code>normal</code> on the marker.</td>
+							<td>The foreignObject is not mixed with the color of the background.</td>
 						</tr>
 					</table>
 				</section>
 				<section>
-					<h4>Isolated groups and <code>mix-blend-mode</code></h4>
-						<table>
-							<tr>
-								<th>Test name</th>
-								<th>Elements and styles</th>
-								<th>Expected result</th>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</table>
+					<h4><code>mix-blend-mode</code> with groups</h4>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td>Group of overlapping elements with SVG background</td>
+							<td>Set a background color for the SVG. Create a <code>group</code> element containing two overlapping <code>rect</code> elements, each filled with a different solid color. Apply a <code>mix-blend-mode</code> on the group other than <code>normal</code>.</td>
+							<td>The <code>group</code> is mixed as a whole with the color of the background.</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4><code>mix-blend-mode</code> with isolated groups</h4>
+					<p>By default, every element must create a non-isolated group.
+						However, certain operations in SVG will create isolated groups. If one of the following features is used, the group must become isolated:
+						<ul>
+						    <li>opacity</li>
+						    <li>filters</li>
+						    <li>3D transforms (2D transforms must NOT cause isolation)</li>
+						    <li>blending</li>
+						    <li>masking</li>
+						</ul>
+					</p>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td>Blending two elements in an isolated group</td>
+							<td>Set a background color for the SVG. Create a <code>group</code> element containing two overlapping <code>rect</code> elements, each filled with a different solid color. Apply <code>opacity</code> less than 1 on the group and a <code>mix-blend-mode</code> other than <code>normal</code> on the second rect.</td>
+							<td>Only the intersection of the <code>rect</code> elements should mix.</td>
+						</tr>
+						<tr>
+							<td>Blending in a group with opacity</td>
+							<td>Set a background color for the SVG. Create a <code>group</code> element containing a <code>rect</code> elements filled with a different solid color. Apply <code>opacity</code> less than 1 on the group and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will not mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blending in a group with filter</td>
+							<td>Set a background color for the SVG. Create a <code>group</code> element containing a <code>rect</code> elements filled with a different solid color. Apply a <code>filter</code> on the group and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will not mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blending in a group with 2D transform</td>
+							<td>Set a background color for the SVG. Create a <code>group</code> element containing a <code>rect</code> elements filled with a different solid color. Apply a <code>transform</code> on the group and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blending in a group with 3D transform</td>
+							<td>Set a background color for the SVG. Create a <code>group</code> element containing a <code>rect</code> elements filled with a different solid color. Apply a 3d transform on the group and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will not mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blending in a group with a mask</td>
+							<td>Set a background color for the SVG. Create a <code>group</code> element containing a <code>rect</code> elements filled with a different solid color. Apply a <code>mask</code> on the group and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will not mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blending in a group with mix-blend-mode</td>
+							<td>Set a background color for the SVG. Create a <code>group</code> element containing a <code>rect</code> elements filled with a different solid color. Apply a <code>mix-blend-mode</code> other than <code>normal</code> on the group and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will not mix with the content behind it.</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4>Other test cases</h4>
+					<table>
+						<tr>
+							<td>Blend with element having opacity</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element filled with a different solid color. Apply <code>opacity</code> less than 1 and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with element having stroke</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element filled with a different solid color. Apply a <code>stroke</code> and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with element having stroke-opacity</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element filled with a different solid color. Apply a <code>stroke</code>, <code>stroke-opacity</code> less than 1 and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with element having stroke-dasharray</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element filled with a different solid color. Apply a <code>stroke-dasharray</code> and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with element having transform</td>
+							<td>Set a background color for the SVG. Create an <code>image</code> element. Apply a <code>transform</code> (any combination of <code>translate</code>, <code>rotate</code>, <code>scale</code>, <code>skew</code>) and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>image</code>.</td>
+							<td>The <code>image</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with SVG having viewbox and preserveAspectRatio set</td>
+							<td>Set a background color for the SVG, as well as <code>viewbox</code> and <code>preserveAspectRatio</code>. Create a <code>rect</code> element filled with a different solid color and apply a <code>mix-blend-mode</code> other than <code>normal</code> on it.</td>
+							<td>The <code>rect</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with an element having color-profile set</td>
+							<td>Set a background color for the SVG. Create an <code>image</code> element. Apply a <code>color-profile</code> (<code>sRGB</code>, for example) and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>image</code>.</td>
+							<td>The <code>image</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with an element having overflow</td>
+							<td>Set a background color for the SVG. Create an <code>image</code> larger than the SVG. Apply <code>overflow</code> (<code>visible</code>, <code>hidden</code>, <code>scroll</code>) and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>image</code>.</td>
+							<td>The <code>image</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with an element having clip-path</td>
+							<td>Set a background color for the SVG. Create an <code>image</code> element. Apply a <code>clip-path</code> and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>image</code>.</td>
+							<td>The <code>image</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with an element having a mask</td>
+							<td>Set a background color for the SVG. Create an <code>image</code> element. Apply a <code>mask</code> and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>image</code>.</td>
+							<td>The <code>image</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with an element having a filter</td>
+							<td>Set a background color for the SVG. Create an <code>image</code> element. Apply a <code>filter</code> and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>image</code>.</td>
+							<td>The <code>image</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Blend with an animated element</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element filled with a different solid color. Apply a <code>animateTransform</code> and a <code>mix-blend-mode</code> other than <code>normal</code> on the <code>rect</code>.</td>
+							<td>The <code>rect</code> will mix with the content behind it.</td>
+						</tr>
+						<tr>
+							<td>Set blending from a script element</td>
+							<td>Set a background color for the SVG. Create a <code>rect</code> element and fill it with a solid color. Apply a <code>mix-blend-mode</code> (other than <code>normal</code>) on it from an svg <code>script</code> element.</td>
+							<td>The <code>rect</code> will mix with the content behind it.</td>
+						</tr>
+					</table>
 				</section>
 			</section>
 		</section>
