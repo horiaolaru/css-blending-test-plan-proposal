@@ -367,14 +367,14 @@
 								<td> The child element [CB] will NOT preserve its 3D position. <br>
 								<code>mix-blend-mode</code> override the behavior of <code>transform-style:preserve-3d</code>:
 								creates a flattened representation of the descendant elements <br>
-								[Check this] The color of the group created by the child elements([B] and [CB]) will blend with the color of the parent element [P] </td>
+								The color of the group created by the child elements([B] and [CB]) will blend with the color of the parent element [P] </td>
 							</tr>
 							<tr>
 								<td>Blended element with transform and perspective</td>
 								<td>2 elements required: <a href="#test_outline" title="parent element with a property that creates stacking context">[P]</a> and <a href="#test_outline" title="Element with mix-blend-mode property other than normal">[B]</a> <br>
 										[P] - parent element with a property that creates a stacking context (e.g. <code>position:fixed</code>) <br>
 										[B] - element with <code>mix-blend-mode</code> other than normal and transform with <code>perspective</code> set to positive length </td>
-								<td>[Check] The colors of the parent and the child are mixed ([P] and [B]) <br>
+								<td>The colors of the parent and the child are mixed ([P] and [B]) <br>
 									The element (and the content) of the element [B] is properly transformed
 								</td>
 							</tr>
