@@ -10,7 +10,7 @@
 			var respecConfig = {
 					specStatus: "unofficial",
 					shortName:  "css3-blending-test-plan",
-					editors: [ 
+					editors: [
 								{
 									name: "Mirela Budaes",
 									company: "Adobe Systems, Inc.",
@@ -767,7 +767,8 @@
 				</section>
 				<section>
 					<h4><code>mix-blend-mode</code> with isolated groups</h4>
-					<p>By default, every element must create a non-isolated group.<br>
+					<p>Refers to the following assertion in the <a href="http://dev.w3.org/fxtf/compositing-1/#mix-blend-mode" >spec</a>:
+					<br><q>By default, every element must create a non-isolated group.<br>
 						However, certain operations in SVG will create isolated groups.<br>
 						If one of the following features is used, the group must become isolated:
 						<ul>
@@ -776,7 +777,7 @@
 						    <li>3D transforms (2D transforms must NOT cause isolation)</li>
 						    <li>blending</li>
 						    <li>masking</li>
-						</ul>
+						</ul> </q>
 					</p>
 					<table>
 						<tr>
@@ -836,7 +837,7 @@
 					</table>
 				</section>
 				<section>
-					<h4>Other test cases</h4>
+					<h4>Other test cases for SVG</h4>
 					<table>
 						<tr>
 							<td>Blend with element having opacity</td>
