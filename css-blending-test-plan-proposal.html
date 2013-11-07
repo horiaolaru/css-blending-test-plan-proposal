@@ -777,7 +777,8 @@
 						    <li>3D transforms (2D transforms must NOT cause isolation)</li>
 						    <li>blending</li>
 						    <li>masking</li>
-						</ul> </q>
+						</ul>
+					</q>
 					</p>
 					<table>
 						<tr>
@@ -929,6 +930,407 @@
 					</table>
 				</section>
 			</section>
+			<section>
+				<h3>Test cases for <code>background-blend-mode</code></h3>
+				<section>
+					<h4>Blending between the background layers and the background color for an element with <code>background-blend-mode</code> </h4>
+					<p>Refers to the following assertion in the <a href="http://dev.w3.org/fxtf/compositing-1/#background-blend-mode">spec</a>: <q>Each background layer must blend with the element's background layer that are below it and the element's background color.</q></p>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td>Images with different formats</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+								Tests should be created for <code>&lt;image&gt;</code> with different formats such as PNG, JPEG or SVG
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code></td>
+						</tr>
+						<tr>
+							<td>Gradient and background color</td>
+							<td>
+								Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;gradient&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code></td>
+						</tr>
+						<tr>
+							<td>Image and gradient</td>
+							<td>
+								Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code> on top of a <code>&lt;gradient&gt;</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>&lt;image&gt;</code> is mixed with the content of the <code>&lt;gradient&gt;</code>
+							</td>
+						</tr>
+						<tr>
+							<td>Gradient and image</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to a <code>&lt;gradient&gt;</code> on top of an <code>&lt;image&gt;</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>&lt;image&gt;</code> is mixed with the content of the <code>&lt;gradient&gt;</code></td>
+						</tr>
+						<tr>
+							<td>Two gradients</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to a <code>&lt;gradient&gt;</code> on top of another <code>&lt;gradient&gt;</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul></td>
+							<td>The content of the two gradients is mixed</td>
+						</tr>
+						<tr>
+							<td>Two images</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code> on top of another <code>&lt;image&gt;</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul></td>
+							<td>The content of the two images is mixed</td>
+						</tr>
+						<tr>
+							<td>Image and background color with transparency</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code> with transparency(e.g. PNG images)</li>
+									<li><code>background-color</code> set to a transparent color</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code></td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4>Background layers do not blend with content outside the background (or behind the element)</h4>
+					<p>Refers to the following assertion in the <a href="http://dev.w3.org/fxtf/compositing-1/#background-blend-mode">spec</a>: <q>Background layer must not blend with the content that is behind the element instead they must act as if they are rendered into an isolated group.</q>
+					</p>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td>One background layer</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The <code>background-image</code> is not mixed with anything outside the element</td>
+						</tr>
+						<tr>
+							<td>Two elements</td>
+							<td>2 elements required: a parent element with a child. <br>
+								Each one with the following properties:
+								<ul>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							<td>No blending between the background colors of the two elements</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4> <code>background-blend-mode</code> list values apply to the corresponding background layer</h4>
+					<p>Refers to the following assertion in the <a href="http://dev.w3.org/fxtf/compositing-1/#background-blend-mode">spec</a>: <q>The ‘background-blend-mode’ list must be applied in the same order as ‘background-image’[CSS3BG]. This means that the first element in the list will apply to the layer that is on top.</q>
+					</p>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td>Different blend modes applied between layers</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image-list&gt;</code> containing three images: (e.g. I1, I2 and I3 ) </li>
+									<li><code>background-blend-mode</code> set to different <code>blendmode</code> for every image: (e.g. multiply, difference, screen) </li>
+								</ul></td>
+							<td>The content of the three images is correctly mixed <br>
+							(multiply for I1, difference for I2 and screen for I3)
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4><code>background-blend-mode</code> list values are repeated if don't match the number of background layers</h4>
+					<p>Refers to the following assertion in the <a href="http://dev.w3.org/fxtf/compositing-1/#background-blend-mode">spec</a>: <q>If a property doesn't have enough comma-separated values to match the number of layers, the UA must calculate its used value by repeating the list of values until there are enough.</q>
+					</p>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td>Blend mode list repeat</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image-list&gt;</code> containing three images</li>
+									<li><code>background-blend-mode</code> set to two different <code>blendmode</code> values</li>
+								</ul></td>
+							<td>The unspecified blend modes should be obtained by repeating the blend mode list from the beginning</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4>The default <code>background-blend-mode</code> value for the <code>background</code> shorthand is 'normal' </h4>
+					<p>Refers to the following assertion in the <a href="http://dev.w3.org/fxtf/compositing-1/#background-blend-mode">spec</a>: <q>If the ‘background’ [CSS3BG] shorthand is used, the ‘background-blend-mode’ property for that element must be reset to its initial value.</q>
+					</p>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td>Default blend mode for 'background' shorthand</td>
+							<td>Element with
+								<ul>
+									<li><code>background</code> property set to an image and a color</li>
+									<li>No value explicitly set for <code>background-blend-mode</code> </li>
+								</ul></td>
+							<td> The computed value of <code>background-blend-mode</code> is 'normal'
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4><code>background-blend-mode</code> for an element with <code>background-position</code></h4>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td><code>background-position</code> percentage</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-position</code> specified in percentage, such as 50% 50%</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The <code>background-image</code> is correctly positioned
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4><code>background-blend-mode</code> for an element with <code>background-size</code></h4>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td>Background size defined in pixels</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-size</code> specified in pixels</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The <code>background-image</code> has the correct size
+							</td>
+						</tr>
+						<tr>
+							<td>Background size defined in percentage (second phase)</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-size</code> specified in percentage</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The <code>background-image</code> has the correct size
+							</td>
+						</tr>
+						<tr>
+							<td>Background size cover</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-size</code> set to <code>cover</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The <code>background-image</code> has the correct size
+							</td>
+						</tr>
+						<tr>
+							<td>Background size contain</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-size</code> set to <code>contain</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The <code>background-image</code> has the correct size
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4><code>background-blend-mode</code> for an element with <code>background-repeat</code></h4>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td><code>background-repeat</code> set to no-repeat</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-repeat</code> set to <code>no-repeat</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The <code>background-image</code> is not repeated
+							</td>
+						</tr>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4><code>background-blend-mode</code> for an element with <code>background-clip</code></h4>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td><code>background-clip</code> set to <code>padding-box</code></td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-clip</code> set to <code>padding-box</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							No background is drawn below the border (background extends to the outside edge of the padding)
+							</td>
+						</tr>
+						<tr>
+							<td><code>background-clip</code> set to <code>content-box</code></td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-clip</code> set to <code>content-box</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The background is painted within (clipped to) the content box
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4><code>background-blend-mode</code> for an element with <code>background-origin</code></h4>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td><code>background-origin</code> set to <code>border-box</code></td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-origin</code> set to <code>border-box</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The background extends to the outside edge of the border (but underneath the border in z-ordering)
+							</td>
+						</tr>
+						<tr>
+							<td><code>background-origin</code> set to <code>content-box</code></td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-origin</code> set to <code>content-box</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The background is painted within (clipped to) the content box
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h4><code>background-blend-mode</code> for an element with <code>background-attachement</code></h4>
+					<table>
+						<tr>
+							<th>Test name</th>
+							<th>Elements and styles</th>
+							<th>Expected result</th>
+						</tr>
+						<tr>
+							<td><code>background-attachment</code> set to <code>fixed</code></td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-attachment</code> set to <code>fixed</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							The background image will not scroll with its containing element, instead remaining stationary within the viewport
+							</td>
+						</tr>
+					</table>
+				</section>
 		</section>
 	</body>
 </html>
