@@ -1020,6 +1020,62 @@
 							</td>
 							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code></td>
 						</tr>
+						<tr>
+							<td>Cross-fade image and gradient</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to a <q>cross-fade()</q> image on top of a <code>&lt;gradient&gt;</code> </li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the cross-faded image is mixed with the content of the <code>&lt;gradient&gt;</code></td>
+						</tr>
+						<tr>
+							<td>SVG image and background color</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to a data URI for an SVG image </li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the image is mixed with the color of the background</td>
+						</tr>
+						<tr>
+							<td>Animated gif image and background color</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an animated gif image</li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the image is mixed with the color of the background</td>
+						</tr>
+						<tr>
+							<td>Set <code>background-blend-mode</code> from JavaScript</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to a <code>gradient</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li>no <code>background-blend-mode</code> explicitly specified</li>
+									From JavaScript, set the <code>background-blend-mode</code> property to a value other than normal.
+								</ul>
+							</td>
+							<td>The content of the gradient is mixed with the color of the background</td>
+						</tr>
+						<tr>
+							<td><code>background-blend-mode</code> on element with 3D transform</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+									<li><code>transform</code> set to a 3D function like rotateX, rotateY or translateZ</li>
+								</ul>
+							</td>
+							<td>The content of the image is mixed with the color of the background</td>
+						</tr>
 					</table>
 				</section>
 				<section>
@@ -1051,6 +1107,21 @@
 									<li><code>background-blend-mode</code> other than normal</li>
 								</ul>
 							<td>No blending between the background colors of the two elements</td>
+						</tr>
+						<tr>
+							<td>Parent and child with <code>background-blend-mode</code></td>
+							<td>2 elements required: a parent element with a child <br>
+								Parent properties: <br>
+								<ul>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+								Child properties: <br>
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							<td>The content of the image from the child element does not mixes with the background color from the parent element</td>
 						</tr>
 					</table>
 				</section>
@@ -1232,6 +1303,31 @@
 							The <code>background-image</code> is not repeated
 							</td>
 						</tr>
+						<tr>
+							<td><code>background-repeat</code> set to space</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-repeat</code> set to <code>space</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							</td>
+						</tr>
+						<tr>
+							<td><code>background-repeat</code> set to round</td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to an <code>&lt;image&gt;</code></li>
+									<li><code>background-color</code> set to a fully opaque color</li>
+									<li><code>background-repeat</code> set to <code>round</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
+							</td>
 						</tr>
 					</table>
 				</section>
@@ -1331,6 +1427,18 @@
 							</td>
 							<td>The content of the <code>background-image</code> is mixed with the color of the <code>background-color</code> <br>
 							The background image will not scroll with its containing element, instead remaining stationary within the viewport
+							</td>
+						</tr>
+						<tr>
+							<td>2 background images with <code>background-attachment</code> set to <code>fixed, scroll</code></td>
+							<td>Element with
+								<ul>
+									<li><code>background-image</code> set to 2 <code>&lt;image&gt;</code>(s)</li>
+									<li><code>background-attachment</code> set to <code>fixed, scroll</code></li>
+									<li><code>background-blend-mode</code> other than normal</li>
+								</ul>
+							</td>
+							<td>The background images will be mixed when they overlap while scrolling
 							</td>
 						</tr>
 					</table>
